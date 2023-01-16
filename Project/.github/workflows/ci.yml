@@ -1,0 +1,23 @@
+name: CI
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Set up JDK
+      uses: actions/setup-java@v1
+      with:
+        java-version: 11
+    - name: Build with Gradle
+      run: ./gradlew clean test
+    - name: Import results to Xray
+      run: |
+        export JIRA_USERNAME=<your-jira-username>
+        export JIRA_API_TOKEN=<your-jira-api-token>
+        export JIRA_SERVER=<your-jira-server-url>
+        export TEST_RESULTS_PATH=<path-to-test-results-folder>
+        java -jar xray-connector.jar -jira.username=$JIRA_USERNAME -jira.password=$JIRA_API_TOKEN -jira
+
