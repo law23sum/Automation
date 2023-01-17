@@ -8,6 +8,7 @@
     <packaging>jar</packaging>
 
     <name>POM</name>
+<!--   https://docs.getxray.app/display/XRAY/Integration+with+Maven-->
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -76,6 +77,36 @@
             <version>3.23.1</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>app.getxray</groupId>
+            <artifactId>xray-junit-extensions</artifactId>
+            <version>0.6.2</version>
+            <scope>test</scope>
+        </dependency>
+<!--        https://docs.getxray.app/display/XRAY/Testing+Windows+Applications+using+Appium+and+JUnit+in+Java-->
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>3.3.1</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+        </dependency>
+        <dependency>
+            <groupId>io.appium</groupId>
+            <artifactId>java-client</artifactId>
+            <version>5.0.0-BETA6</version>
+        </dependency>
+
+        <dependency>
+            <groupId>net.serenity.plugins.jira</groupId>
+            <artifactId>serenity-jira-requirements-provider</artifactId>
+            <version>xxx</version>
+        </dependency>
+
+
     </dependencies>
     <build>
         <plugins>
@@ -139,6 +170,39 @@
                     </execution>
                 </executions>
             </plugin>
+
         </plugins>
     </build>
+    <plugins>
+        ...
+        <plugin>
+            <groupId>net.serenity.maven.plugins</groupId>
+            <artifactId>maven-serenity-plugin</artifactId>
+            <version>xxx</version>
+            <executions>
+                <execution>
+                    <id>serenity-reports</id>
+                    <phase>post-integration-test</phase>
+                    <goals>
+                        <goal>aggregate</goal>
+                    </goals>
+                </execution>
+            </executions>
+            <dependencies>
+                <dependency>
+                    <groupId>net.serenity.plugins.jira</groupId>
+                    <artifactId>serenity-jira-requirements-provider</artifactId>
+                    <version>xxx</version>
+                </dependency>
+            </dependencies>
+        </plugin>
+    </plugins>
+    <reporting>
+        <plugins>
+            <plugin>
+<!--                https://docs.getxray.app/display/XRAY/Testing+Windows+Applications+using+Appium+and+JUnit+in+Java-->
+                <artifactId>maven-surefire-report-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </reporting>
 </project>
