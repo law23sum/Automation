@@ -1,8 +1,0 @@
-Cucumber-Junit : "io.cucumber:cucumber-junit:$cucumberJvmVersion"
-Cucumber-xray : "com.smartbear.cucumber:cucumber-xray:$cucumberXrayVersion"
-Cucumber-xray-connector : "com.smartbear.cucumber:cucumber-xray-connector:$cucumberXrayVersion"
-Junit : "junit:junit:4.13"
-Logging : "org.slf4j:slf4j-api:1.7.30"
-Selenium-support : "org.seleniumhq.selenium:selenium-support:$seleniumVersion"
-Testcontainers : "org.testcontainers:testcontainers:1.14.3"
-Testcontainers-cucumber : "org.testcontainers:testcontainers-cucumber:1.14.3"
