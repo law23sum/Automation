@@ -15,7 +15,7 @@ steps:
 - name: Set up JDK
   uses: actions/setup-java@v1
   with:
-  java-version: 11
+  java-version: 1.8
 - name: Build with Gradle
   run: ./gradlew clean test
 - name: Import results to Xray
